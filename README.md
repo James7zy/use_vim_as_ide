@@ -1,7 +1,4 @@
 <h1 align="center">所需即所获：像 IDE 一样使用 vim</h1>
-yangyangwithgnu@yeah.net  
-2016-03-30 16:39:33
-
 
 ##【谢谢】
 
@@ -97,8 +94,6 @@ vi 之大道如我心之禅，<br />
  长修此道者巨变人生。<br />
 </div>
 <div align="right">
-作：reddy@lion.austin.com<br />
-译：yangyangwithgnu@yeah.net<br />
 </div><br />  
 
 言归正传，说说 vim 用于代码编写提供了哪些直接和间接功能支撑。vim 用户手册中，50％ 的例子都是在讲 vim 如何高效编写代码，由此可见，vim 是一款面向于程序员的编辑器，即使某些功能 vim 无法直接完成，借助其丰富的插件资源，必定可以达成目标，这就是所需即所获。
