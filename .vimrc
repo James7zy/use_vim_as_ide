@@ -1,7 +1,7 @@
 " 更新时间：2016-03-30 12:15:21
 
 " 定义快捷键的前缀，即 <Leader>
-let mapleader=";"
+let mapleader="\<space>"
 
 " >>
 " 文件类型侦测
@@ -75,42 +75,56 @@ set wildmenu
 " 插件安装
 
 " vundle 环境设置
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+"filetype off
+"set rtp+=~/.vim/bundle/Vundle.vim
 " vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
-call vundle#begin()
+" 使用的是vim plug插件
+call plug#begin() 
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'vim-scripts/phd'
+Plug 'Lokaltog/vim-powerline'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kshenoy/vim-signature'
+Plug 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/indexer.tar.gz'
+Plug 'vim-scripts/DfrankUtil'
+Plug 'vim-scripts/vimprj'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/DrawIt'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
+Plug 'derekwyatt/vim-protodef'
+Plug 'scrooloose/nerdtree'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'gcmt/wildfire.vim'
+Plug 'sjl/gundo.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'suan/vim-instant-markdown'
+Plug 'Yggdroot/LeaderF'
+Plug 'junegunn/vim-easy-align'
+Plug 'rhysd/vim-clang-format'
+Plug 'azabiong/vim-highlighter'
+Plug 'justinmk/vim-dirvish'
+Plug 'tpope/vim-unimpaired'
+Plug 'easymotion/vim-easymotion'
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/phd'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'kshenoy/vim-signature'
-Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/indexer.tar.gz'
-Plugin 'vim-scripts/DfrankUtil'
-Plugin 'vim-scripts/vimprj'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/DrawIt'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'scrooloose/nerdtree'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'gcmt/wildfire.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'lilydjwg/fcitx.vim'
+Plug 'skywind3000/quickmenu.vim'
+Plug 'skywind3000/vim-preview'
+Plug 'skywind3000/gutentags_plus'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " 插件列表结束
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 " <<<<
 
@@ -199,22 +213,23 @@ syntax on
 filetype indent on
 
 " 将制表符扩展为空格
-set expandtab
-" 设置编辑时制表符占用空格数
+"set expandtab
+"" 设置编辑时制表符占用空格数
 set tabstop=4
-" 设置格式化时制表符占用空格数
+"" 设置格式化时制表符占用空格数
 set shiftwidth=4
-" 让 vim 把连续数量的空格视为一个制表符
+"" 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
 
-" 缩进可视化插件 Indent Guides
-" 随 vim 自启动
+"
+"" 缩进可视化插件 Indent Guides
+"" 随 vim 自启动
 let g:indent_guides_enable_on_vim_startup=1
-" 从第二层开始可视化显示缩进
+"" 从第二层开始可视化显示缩进
 let g:indent_guides_start_level=2
-" 色块宽度
+"" 色块宽度
 let g:indent_guides_guide_size=1
-" 快捷键 i 开/关缩进可视化
+"" 快捷键 i 开/关缩进可视化
 nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 " <<
@@ -224,7 +239,7 @@ nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 " 基于缩进或语法进行代码折叠
 "set foldmethod=indent
-set foldmethod=syntax
+"set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
 
@@ -338,16 +353,6 @@ nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 " 只能是 #include 或已打开的文件
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 
-" <<
-
-" >>
-" 查找
-
-" 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
-nnoremap <Leader>sp :CtrlSF<CR>
-
-" <<
-
 " >>
 " 内容替换
 
@@ -457,7 +462,7 @@ nmap <Leader>man :Man 3 <cword><CR>
 " 工程文件浏览
 
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
-nmap <Leader>fl :NERDTreeToggle<CR>
+nmap <Leader>ifl :NERDTreeToggle<CR>
 " 设置 NERDTree 子窗口宽度
 let NERDTreeWinSize=22
 " 设置 NERDTree 子窗口位置
@@ -523,3 +528,179 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 " 调用 gundo 树
 nnoremap <Leader>ud :GundoToggle<CR>
 
+"--------------
+" LeaderF start
+"--------------
+let s:cachedir = expand('~/.cache/vim')
+let s:configdir = expand('~/.config/vim')
+
+"let g:Lf_Ctags="ctags"
+let g:Lf_WorkingDirectoryMode = 'AF'
+let g:Lf_RootMarkers = ['.git', '.svn', '.hg', '.project', '.root']
+let g:Lf_UseVersionControlTool=1 "default value, can ignore
+let g:Lf_DefaultExternalTool='rg'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = s:cachedir
+"let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = {
+        \ 'File': 0,
+        \ 'Buffer': 0,
+        \ 'Mru': 0,
+        \ 'Tag': 0,
+        \ 'BufTag': 1,
+        \ 'Function': 1,
+        \ 'Line': 1,
+        \ 'Colorscheme': 0,
+        \ 'Rg': 0,
+        \ 'Gtags': 0
+        \}
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_GtagsGutentags = 1
+
+let g:Lf_Gtagsconf = '<gtags_root_path>/share/gtags/gtags.conf'
+let g:Lf_Gtagslabel = 'native-pygments'
+
+"let g:Lf_GtagsAutoGenerate = 1
+"let g:Lf_Gtagslabel = 'native-pygments'
+"let g:Lf_GtagsSource = 1
+
+let g:Lf_ShortcutF = '<c-p>'
+let g:Lf_ShortcutB = '<c-l>'
+noremap <leader>f :LeaderfSelf<cr>
+noremap <leader>fm :LeaderfMru<cr>
+noremap <leader>ff :LeaderfFunction<cr>
+noremap <leader>fb :LeaderfBuffer<cr>
+noremap <leader>ft :LeaderfBufTag<cr>
+noremap <leader>fl :LeaderfLine<cr>
+noremap <leader>fw :LeaderfWindow<cr>
+noremap <leader>frr :LeaderfRgRecall<cr>
+
+nmap <unique> <leader>fr <Plug>LeaderfRgPrompt
+nmap <unique> <leader>fra <Plug>LeaderfRgCwordLiteralNoBoundary
+nmap <unique> <leader>frb <Plug>LeaderfRgCwordLiteralBoundary
+nmap <unique> <leader>frc <Plug>LeaderfRgCwordRegexNoBoundary
+nmap <unique> <leader>frd <Plug>LeaderfRgCwordRegexBoundary
+
+"vmap <unique> <leader>fra <Plug>LeaderfRgVisualLiteralNoBoundary
+"vmap <unique> <leader>frb <Plug>LeaderfRgVisualLiteralBoundary
+"vmap <unique> <leader>frc <Plug>LeaderfRgVisualRegexNoBoundary
+"vmap <unique> <leader>frd <Plug>LeaderfRgVisualRegexBoundary
+
+nmap <unique> <leader>fgd <Plug>LeaderfGtagsDefinition
+nmap <unique> <leader>fgr <Plug>LeaderfGtagsReference
+nmap <unique> <leader>fgs <Plug>LeaderfGtagsSymbol
+nmap <unique> <leader>fgg <Plug>LeaderfGtagsGrep
+
+vmap <unique> <leader>fgd <Plug>LeaderfGtagsDefinition
+vmap <unique> <leader>fgr <Plug>LeaderfGtagsReference
+vmap <unique> <leader>fgs <Plug>LeaderfGtagsSymbol
+vmap <unique> <leader>fgg <Plug>LeaderfGtagsGrep
+
+noremap <leader>fgo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fgn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fgp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+"--------------
+" LeaderF end
+"--------------
+
+" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 同时开启 ctags 和 gtags 支持：
+let g:gutentags_modules = []
+
+if executable('ctags')
+        let g:gutentags_modules += ['ctags']
+    endif
+    if executable('gtags-cscope') && executable('gtags')
+            let g:gutentags_modules += ['gtags_cscope']
+endif
+
+" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags
+" 目录中，避免污染工程目录
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+" 配置 ctags 的参数，老的 Exuberant-ctags 不能有 --extra=+q，注意
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 如果使用 universal ctags 需要增加下面一行，老的 Exuberant-ctags
+" 不能加下一行
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+
+" 禁用 gutentags 自动加载 gtags 数据库的行为
+let g:gutentags_auto_add_gtags_cscope = 0
+
+
+let g:gutentags_plus_nomap = 1
+
+noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
+noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
+noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
+noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
+noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
+noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
+noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
+noremap <silent> <leader>gz :GscopeFind z <C-R><C-W><cr>
+
+let HiSet   = 'f<CR>'
+let HiErase = 'f<BS>'
+let HiClear = 'f<C-L>'
+let HiFind  = 'f<Tab>'
+let HiSetSL = 't<CR>'
+
+
+" jump key mappings
+nn <CR>  <Cmd>Hi><CR>
+nn g<CR> <Cmd>Hi<<CR>
+nn gl    <Cmd>Hi}<CR>
+nn gh    <Cmd>Hi{<CR>
+nn gj    <Cmd>Hi]<CR>
+nn gk    <Cmd>Hi[<CR>
+
+" find key mappings
+nn =        <Cmd>Hi/next<CR>
+nn _        <Cmd>Hi/previous<CR>
+nn f<Left>  <Cmd>Hi/older<CR>
+nn f<Right> <Cmd>Hi/newer<CR>
+
+" sync mode
+" let HiSyncMode = 1
+
+" command abbreviations
+ca HL Hi:load
+ca HS Hi:save
+
+" directory to store highlight files
+" let HiKeywords = '~/.config/keywords'
+
+" additional highlight colors
+" hi HiColor21 ctermfg=52  ctermbg=181 guifg=#8f5f5f guibg=#d7cfbf cterm=bold gui=bold
+" hi HiColor22 ctermfg=254 ctermbg=246 guifg=#e7efef guibg=#979797 cterm=bold gui=bold
+
+" jump key mappings
+"nn n <Cmd>call HiSearch('n')<CR>
+"nn N <Cmd>call HiSearch('N')<CR>
+"nn <Esc>n <Cmd>noh<CR>
+
+" <Leader>f{char} to move to {char}
+map  <Leader>s <Plug>(easymotion-bd-f)
+nmap <Leader>s <Plug>(easymotion-overwin-f)
+"
+" " s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+"
+" " Move to line
+ map <Leader>L <Plug>(easymotion-bd-jk)
+ nmap <Leader>L <Plug>(easymotion-overwin-line)
+"
+" " Move to word
+ map  <Leader>w <Plug>(easymotion-bd-w)
+ nmap <Leader>w <Plug>(easymotion-overwin-w)
