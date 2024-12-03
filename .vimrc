@@ -704,3 +704,6 @@ nmap s <Plug>(easymotion-overwin-f2)
 " " Move to word
  map  <Leader>w <Plug>(easymotion-bd-w)
  nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" set backspace
+set backspace=indent,eol,start
